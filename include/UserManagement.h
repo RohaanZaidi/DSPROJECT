@@ -9,12 +9,12 @@ using namespace std;
 struct User {
     string username;
     string password;
-    string role; // "rider" or "driver"
+    string role; //this will either be the driver or the rider
 };
 
 class UserManagement {
 private:
-    unordered_map<string, User> users;   // username → User
+    unordered_map<string, User> users;
 
 public:
     bool registerUser(const string& username, const string& password, const string& role);
@@ -24,3 +24,4 @@ public:
 };
 
 #endif
+
