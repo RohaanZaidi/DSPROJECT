@@ -17,11 +17,12 @@ struct Trip {
 
 class TripHistory {
 private:
-    unordered_map<string, vector<Trip>> riderTrips;
-    unordered_map<string, vector<Trip>> driverTrips;
+    unordered_map<string, vector<Trip>> riderTrips;   // rider → trips
+    unordered_map<string, vector<Trip>> driverTrips;  // driver → trips
 
 public:
     void addTrip(const Trip& t);
+
     vector<Trip> getRiderHistory(const string& rider);
     vector<Trip> getDriverHistory(const string& driver);
 };
