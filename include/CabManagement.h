@@ -1,8 +1,8 @@
 #ifndef CAB_MANAGEMENT_H
 #define CAB_MANAGEMENT_H
 
-#include <vector>
 #include <string>
+#include <vector>
 #include <unordered_map>
 
 using namespace std;
@@ -11,7 +11,7 @@ struct Cab {
     string cabId;
     string driverName;
     bool available;
-    double x, y; // coordinates
+    double x, y; // location of cab
 };
 
 class CabManagement {
@@ -27,3 +27,4 @@ public:
 };
 
 #endif
+
