@@ -1,27 +1,52 @@
-#ifndef USER_MANAGEMENT_H
-#define USER_MANAGEMENT_H
+#ifndef USER_MODULE_H
+#define USER_MODULE_H
 
-#include <string>
-#include <unordered_map>
-
+#include <iostream>
 using namespace std;
 
-struct User {
-    string username;
+//------------------------------------------------------------
+// USER NODE
+//------------------------------------------------------------
+class User {
+public:
+    int ID;
+    string name;
+    int phoneNO;
     string password;
-    string role; //this will either be the driver or the rider
+    User* next;
+
+    User(int ID, string name, int phoneNO, string password);
 };
 
-class UserManagement {
+//------------------------------------------------------------
+// USER HASH TABLE (for Riders + Drivers)
+//------------------------------------------------------------
+class UserList {
 private:
-    unordered_map<string, User> users;
+    static const int TABLE_SIZE = 10;
+    User* table[TABLE_SIZE];   // Passengers
+    User* table2[TABLE_SIZE];  // Drivers
+
+    int hashFunction(int key);
 
 public:
-    bool registerUser(const string& username, const string& password, const string& role);
-    bool loginUser(const string& username, const string& password);
-    bool userExists(const string& username);
-    string getUserRole(const string& username);
+    UserList();
+
+    // USER (PASSENGER)
+    void registerUser(int id, string name, int phone, string pass);
+    bool loginUser(int id, string pass);
+    void changeUserPassword(int id, string newPass);
+
+    // DRIVER
+    void registerDriver(int id, string name, int phone, string pass);
+    bool loginDriver(int id, string pass);
+    void changeDriverPassword(int id, string newPass);
+
+    // Display everything
+    void displayAll();
 };
 
 #endif
+
+
 
